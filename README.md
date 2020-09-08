@@ -1,4 +1,4 @@
-# Back end for my resume website
+# Back end for resume website
 Tools used: 
 * [Nest JS](https://github.com/nestjs)
 * [Nest JS Passport](https://github.com/nestjs/passport)
