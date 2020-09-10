@@ -10,9 +10,11 @@ import {
   NotFoundException,
   Delete,
   Param,
+  UseGuards
 } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDTO } from './dto/post.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('blog')
 export class PostController {
@@ -25,6 +27,7 @@ export class PostController {
     return res.status(HttpStatus.OK).json(posts);
   }
 
+  
   @Post('/create')
   async addPost(@Res() res, @Body() createPostDTO: CreatePostDTO) {
     const post = await this.postService.createPost(createPostDTO);
@@ -51,6 +54,7 @@ export class PostController {
     });
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete('/delete')
   async deletePost(@Res() res, @Query('postID') postID) {
     const post = await this.postService.deletePost(postID);
