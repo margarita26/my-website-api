@@ -1,7 +1,13 @@
 import * as mongoose from 'mongoose';
 
 export const PostSchema = new mongoose.Schema({
-    title: String,
-    text: String,
-    created_at: { type: Date, default: Date.now }
-})
+  title: {
+    type: String,
+    required: true,
+  },
+  text: {
+    type: String,
+    required: true,
+  },
+  created_at: { type: Date, default: Date.now },
+});
